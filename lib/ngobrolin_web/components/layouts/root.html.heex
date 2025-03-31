@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="id" class="[scrollbar-gutter:stable]">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="csrf-token" content={get_csrf_token()} />
+    <!-- Primary Meta Tags -->
+    <meta
+      name="description"
+      content={
+        assigns[:meta_description] ||
+          "Ngobrolin WEB - Podcast tentang pengembangan web dan teknologi terkini. Mengudara setiap Selasa malam mulai pukul 20:00 WIB."
+      }
+    />
+    <meta
+      name="keywords"
+      content="podcast web, pengembangan web, teknologi, web development, programming"
+    />
+    <meta name="author" content="Ngobrolin WEB" />
+    
+<!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content={
+        assigns[:canonical_url] ||
+          "https://ngobrolin-web.riza.world#{Phoenix.Controller.current_path(@conn)}"
+      }
+    />
+    <meta property="og:title" content={assigns[:page_title] || "Ngobrolin WEB"} />
+    <meta
+      property="og:description"
+      content={
+        assigns[:meta_description] ||
+          "Ngobrolin WEB - Podcast tentang pengembangan web dan teknologi terkini."
+      }
+    />
+    <meta
+      property="og:image"
+      content={assigns[:og_image] || "https://ngobrolin-web.riza.world/images/og-image.png"}
+    />
+    
+<!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:url"
+      content={
+        assigns[:canonical_url] ||
+          "https://ngobrolin-web.riza.world#{Phoenix.Controller.current_path(@conn)}"
+      }
+    />
+    <meta name="twitter:title" content={assigns[:page_title] || "Ngobrolin WEB"} />
+    <meta
+      name="twitter:description"
+      content={
+        assigns[:meta_description] ||
+          "Ngobrolin WEB - Podcast tentang pengembangan web dan teknologi terkini."
+      }
+    />
+    <meta
+      name="twitter:image"
+      content={assigns[:og_image] || "https://ngobrolin-web.riza.world/images/og-image.png"}
+    />
+    
+<!-- Canonical URL -->
+    <link
+      rel="canonical"
+      href={
+        assigns[:canonical_url] ||
+          "https://ngobrolin-web.riza.world#{Phoenix.Controller.current_path(@conn)}"
+      }
+    />
+    
+<!-- Favicons -->
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎙️</text></svg>"
+    />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <.live_title suffix=" · Ngobrolin WEB">
+      {assigns[:page_title] || "Ngobrolin WEB"}
+    </.live_title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link phx-track-static rel="stylesheet" href={~p"/assets/app.css"} />
+    <script defer phx-track-static type="text/javascript" src={~p"/assets/app.js"}>
+    </script>
+    
+<!-- Structured Data / JSON-LD -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "PodcastSeries",
+        "name": "Ngobrolin WEB",
+        "description": "Podcast tentang pengembangan web dan teknologi terkini.",
+        "url": "https://ngobrolin-web.riza.world",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Ngobrolin WEB",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://ngobrolin-web.riza.world/images/logo.jpeg"
+          }
+        },
+        "inLanguage": "id-ID"
+      }
+    </script>
+  </head>
+  <body class="bg-zinc-900 text-white antialiased">
+    <header class="sticky top-0 z-50 bg-zinc-800 border-b-4 border-white">
+      <nav class="container flex items-center justify-between h-16 px-4 mx-auto">
+        <.link
+          href="/"
+          class="text-2xl font-black tracking-tighter transform -rotate-1 hover:text-white"
+        >
+          NGOBROLIN WEB
+        </.link>
+        <div class="flex items-center space-x-4 text-sm font-bold">
+          <.link
+            href="/episodes"
+            class="px-3 py-2 hover:bg-white hover:text-zinc-900 transform transition-transform hover:scale-105"
+          >
+            EPISODE
+          </.link>
+          <.link
+            href="/about"
+            class="px-3 py-2 hover:bg-white hover:text-zinc-900 transform transition-transform hover:scale-105"
+          >
+            TENTANG
+          </.link>
+          <.link
+            href="https://github.com/orgs/ngobrolin/discussions"
+            target="_blank"
+            class="px-3 py-2 hover:bg-white hover:text-zinc-900 transform transition-transform hover:scale-105"
+          >
+            KORESPONDENSI
+          </.link>
+          <.link
+            href="/sponsor"
+            class="px-3 py-2 border-2 border-white hover:bg-white hover:text-zinc-900 transform transition-transform hover:scale-105"
+          >
+            DUKUNGAN
+          </.link>
+        </div>
+      </nav>
+    </header>
+    {@inner_content}
+    <footer class="bg-zinc-800 border-t-4 border-white py-8">
+      <div class="container px-4 mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div>
+            <h3 class="font-bold mb-2">KANAL</h3>
+            <div class="flex gap-4">
+              <a href="https://x.com/search?q=%23ngobrolinweb" class="hover:text-zinc-300">
+                <svg
+                  class="w-6 h-6"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" />
+                </svg>
+              </a>
+              <a
+                href="https://www.youtube.com/playlist?list=PLTY2nW4jwtG8Sx2Bw6QShC271PzX31CtT"
+                class="hover:text-zinc-300"
+              >
+                <svg
+                  class="w-6 h-6"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" />
+                  <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" />
+                </svg>
+              </a>
+              <a href="https://github.com/orgs/ngobrolin/discussions" class="hover:text-zinc-300">
+                <svg
+                  class="w-6 h-6"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+                </svg>
+              </a>
+            </div>
+          </div>
+          <div>
+            <h3 class="font-bold mb-2">JADWAL</h3>
+            <p>Mengudara: Setiap Selasa Malam<br />Mulai 20:00WIB</p>
+          </div>
+          <div>
+            <h3 class="font-bold mb-2">KONTAK</h3>
+            <p>rizafahmi@gmail.com</p>
+          </div>
+        </div>
+        <div class="mt-8 pt-4 border-t border-zinc-700 text-sm text-zinc-400">
+          © {DateTime.utc_now().year} Ngobrolin WEB. Dibuat dengan bantuan AI dan penuh cinta.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
