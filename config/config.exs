@@ -7,22 +7,19 @@
 # General application configuration
 import Config
 
-config :ngobrolin,
-  ecto_repos: [Ngobrolin.Repo],
-  generators: [timestamp_type: :utc_datetime, binary_id: true]
-
-config :elixir, :time_zone_database, Tzdata.TimeZoneDatabase
+config :frombanua,
+  generators: [timestamp_type: :utc_datetime]
 
 # Configures the endpoint
-config :ngobrolin, NgobrolinWeb.Endpoint,
+config :frombanua, FrombanuaWeb.Endpoint,
   url: [host: "localhost"],
   adapter: Bandit.PhoenixAdapter,
   render_errors: [
-    formats: [html: NgobrolinWeb.ErrorHTML, json: NgobrolinWeb.ErrorJSON],
+    formats: [html: FrombanuaWeb.ErrorHTML, json: FrombanuaWeb.ErrorJSON],
     layout: false
   ],
-  pubsub_server: Ngobrolin.PubSub,
-  live_view: [signing_salt: "V67mQL8p"]
+  pubsub_server: Frombanua.PubSub,
+  live_view: [signing_salt: "/gTY6Hfh"]
 
 # Configures the mailer
 #
@@ -31,12 +28,12 @@ config :ngobrolin, NgobrolinWeb.Endpoint,
 #
 # For production it's recommended to configure a different adapter
 # at the `config/runtime.exs`.
-config :ngobrolin, Ngobrolin.Mailer, adapter: Swoosh.Adapters.Local
+config :frombanua, Frombanua.Mailer, adapter: Swoosh.Adapters.Local
 
 # Configure esbuild (the version is required)
 config :esbuild,
   version: "0.17.11",
-  ngobrolin: [
+  frombanua: [
     args:
       ~w(js/app.js --bundle --target=es2017 --outdir=../priv/static/assets --external:/fonts/* --external:/images/*),
     cd: Path.expand("../assets", __DIR__),
@@ -46,7 +43,7 @@ config :esbuild,
 # Configure tailwind (the version is required)
 config :tailwind,
   version: "3.4.3",
-  ngobrolin: [
+  frombanua: [
     args: ~w(
       --config=tailwind.config.js
       --input=css/app.css
@@ -62,16 +59,6 @@ config :logger, :console,
 
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
-
-config :ngobrolin, :playlist_id, "PLTY2nW4jwtG8Sx2Bw6QShC271PzX31CtT"
-
-config :ngobrolin, :youtube_api_key, System.get_env("YOUTUBE_API_KEY")
-config :ngobrolin, :aws_access_key, System.get_env("AWS_ACCESS_KEY")
-
-config :ex_aws,
-  json_codec: Jason,
-  access_key_id: {:system, "AWS_ACCESS_KEY_ID"},
-  secret_access_key: {:system, "AWS_SECRET_ACCESS_KEY"}
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

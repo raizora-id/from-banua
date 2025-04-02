@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full [scrollbar-gutter:stable]">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="csrf-token" content={get_csrf_token()} />
+    <.live_title default="From Banua">
+      {assigns[:page_title] || "Eksplorasi Kalimantan Selatan"}
+    </.live_title>
+    <meta name="description" content="Blog tentang usaha, organisasi, perusahaan, dan tempat-tempat menarik di Kalimantan Selatan.">
+    <link phx-track-static rel="stylesheet" href={~p"/assets/app.css"} />
+    <script defer phx-track-static type="text/javascript" src={~p"/assets/app.js"}></script>
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+  </head>
+  <body class="h-full bg-gray-50">
+    <header class="bg-white shadow-sm">
+      <nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" aria-label="Top">
+        <div class="flex h-16 items-center justify-between">
+          <div class="flex items-center">
+            <a href="/" class="flex items-center">
+              <span class="text-xl font-bold text-primary-600">From Banua</span>
+            </a>
+          </div>
+          <div class="flex items-center space-x-4">
+            <a href="#" class="text-sm font-medium text-gray-700 hover:text-primary-600">Tentang</a>
+            <a href="#" class="text-sm font-medium text-gray-700 hover:text-primary-600">Kontak</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+    
+    <main>
+      {@inner_content}
+    </main>
+    
+    <footer class="bg-white mt-12">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
+        <div class="border-t border-gray-200 pt-8">
+          <p class="text-center text-sm text-gray-500">&copy; 2025 From Banua. Dibuat dengan ❤️ dari Kalimantan Selatan.</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
