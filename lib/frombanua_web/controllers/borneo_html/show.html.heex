@@ -1,0 +1,82 @@
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  <div class="mb-6">
+    <a href="/" class="flex items-center text-sm font-medium text-primary-600 hover:text-primary-700">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+      </svg>
+      Kembali ke daftar
+    </a>
+  </div>
+
+  <div class="bg-white overflow-hidden border border-gray-200 rounded-xl shadow-sm">
+    <div class="relative">
+      <img src={@item.image_url} alt={@item.name} class="w-full h-64 sm:h-96 object-cover" />
+      <div class="absolute top-4 right-4">
+        <span class={"inline-flex items-center px-3 py-1 rounded-full text-sm font-medium #{category_color(@item.category)}"}>
+          <span class="mr-1"><%= category_emoji(@item.category) %></span>
+          <%= category_name(@item.category) %>
+        </span>
+      </div>
+    </div>
+    
+    <div class="p-6">
+      <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-4">
+        <h1 class="text-2xl sm:text-3xl font-bold text-gray-900"><%= @item.name %></h1>
+        <div class="flex items-center mt-2 sm:mt-0 bg-gray-50 px-3 py-1.5 rounded-lg">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1.5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+          </svg>
+          <span class="text-lg font-semibold text-gray-800"><%= format_vote_count(@item.votes) %></span>
+        </div>
+      </div>
+      
+      <p class="text-gray-700 text-lg mb-6"><%= @item.description %></p>
+      
+      <div class="border-t border-gray-200 pt-6 grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-8">
+        <div>
+          <h2 class="text-sm font-medium text-gray-500">Lokasi</h2>
+          <p class="mt-1 text-base font-medium text-gray-900 flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1.5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+            <%= @item.location %>
+          </p>
+        </div>
+        
+        <div>
+          <h2 class="text-sm font-medium text-gray-500">Tahun Berdiri</h2>
+          <p class="mt-1 text-base font-medium text-gray-900 flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1.5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+            <%= @item.founded_at || "Tidak diketahui" %>
+          </p>
+        </div>
+        
+        <div>
+          <h2 class="text-sm font-medium text-gray-500">Website</h2>
+          <p class="mt-1 text-base font-medium text-primary-600 flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1.5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+            </svg>
+            <a href={@item.website} target="_blank" class="hover:underline break-all">
+              <%= @item.website %>
+            </a>
+          </p>
+        </div>
+      </div>
+      
+      <div class="mt-8">
+        <h2 class="text-sm font-medium text-gray-500 mb-3">Tag</h2>
+        <div class="flex flex-wrap gap-2">
+          <%= for tag <- @item.tags do %>
+            <a href={"/?search=#{tag}"} class="inline-flex items-center px-3 py-1.5 rounded-md text-sm font-medium bg-gray-100 text-gray-800 hover:bg-gray-200 transition">
+              #<%= tag %>
+            </a>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

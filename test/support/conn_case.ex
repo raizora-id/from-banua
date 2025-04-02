@@ -1,4 +1,4 @@
-defmodule NgobrolinWeb.ConnCase do
+defmodule FrombanuaWeb.ConnCase do
   @moduledoc """
   This module defines the test case to be used by
   tests that require setting up a connection.
@@ -11,7 +11,7 @@ defmodule NgobrolinWeb.ConnCase do
   we enable the SQL sandbox, so changes done to the database
   are reverted at the end of every test. If you are using
   PostgreSQL, you can even run database tests asynchronously
-  by setting `use NgobrolinWeb.ConnCase, async: true`, although
+  by setting `use FrombanuaWeb.ConnCase, async: true`, although
   this option is not recommended for other databases.
   """
 
@@ -20,19 +20,18 @@ defmodule NgobrolinWeb.ConnCase do
   using do
     quote do
       # The default endpoint for testing
-      @endpoint NgobrolinWeb.Endpoint
+      @endpoint FrombanuaWeb.Endpoint
 
-      use NgobrolinWeb, :verified_routes
+      use FrombanuaWeb, :verified_routes
 
       # Import conveniences for testing with connections
       import Plug.Conn
       import Phoenix.ConnTest
-      import NgobrolinWeb.ConnCase
+      import FrombanuaWeb.ConnCase
     end
   end
 
-  setup tags do
-    Ngobrolin.DataCase.setup_sandbox(tags)
+  setup _tags do
     {:ok, conn: Phoenix.ConnTest.build_conn()}
   end
 end

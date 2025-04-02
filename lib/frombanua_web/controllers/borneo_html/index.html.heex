@@ -1,0 +1,121 @@
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+    <div>
+      <h1 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">From Banua</h1>
+      <p class="mt-2 text-lg text-gray-600">Mari Eksplorasi Kekayaan Budaya dan Inovasi dari Kalimantan Selatan</p>
+    </div>
+    
+    <div class="mt-4 md:mt-0">
+      <form method="get" action="/" class="relative">
+        <input
+          type="text"
+          name="search"
+          placeholder="Cari..."
+          class="block w-full rounded-md border-0 py-2 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-primary-600 sm:text-sm sm:leading-6"
+          value={@conn.params["search"]}
+        />
+        <button type="submit" class="absolute inset-y-0 right-0 flex items-center pr-3">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <div class="flex flex-col sm:flex-row justify-between items-start mb-8">
+    <div class="flex flex-wrap gap-2 mb-4 sm:mb-0">
+      <a href="/" class={"px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-100 transition " <> if(!Map.get(assigns, :active_category), do: "bg-primary-100 text-primary-800", else: "bg-gray-50 text-gray-700")}>
+        Semua
+      </a>
+      <a href={~p"/category/usaha"} class={"px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-100 transition " <> if(Map.get(assigns, :active_category) == "usaha", do: "bg-primary-100 text-primary-800", else: "bg-gray-50 text-gray-700")}>
+        Usaha Lokal
+      </a>
+      <a href={~p"/category/organisasi"} class={"px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-100 transition " <> if(Map.get(assigns, :active_category) == "organisasi", do: "bg-primary-100 text-primary-800", else: "bg-gray-50 text-gray-700")}>
+        Organisasi
+      </a>
+      <a href={~p"/category/perusahaan"} class={"px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-100 transition " <> if(Map.get(assigns, :active_category) == "perusahaan", do: "bg-primary-100 text-primary-800", else: "bg-gray-50 text-gray-700")}>
+        Perusahaan
+      </a>
+      <a href={~p"/category/tempat"} class={"px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-100 transition " <> if(Map.get(assigns, :active_category) == "tempat", do: "bg-primary-100 text-primary-800", else: "bg-gray-50 text-gray-700")}>
+        Tempat
+      </a>
+    </div>
+    
+    <div class="flex items-center">
+      <span class="text-sm font-medium text-gray-700 mr-2">Urut Berdasarkan:</span>
+      <select 
+        name="sort" 
+        id="sort" 
+        class="text-sm border-0 rounded-md py-1.5 pl-2 pr-7 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-primary-600 sm:text-sm"
+        hx-get="/"
+        hx-trigger="change"
+        hx-include="[name='search']"
+        hx-target="body"
+      >
+        <option value="votes" selected={@conn.params["sort_by"] == "votes" || !@conn.params["sort_by"]}>Popularitas</option>
+        <option value="newest" selected={@conn.params["sort_by"] == "newest"}>Terbaru</option>
+        <option value="name" selected={@conn.params["sort_by"] == "name"}>Nama</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <%= for item <- @items do %>
+      <div class="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden hover:shadow-md transition">
+        <a href={~p"/items/#{item.id}"} class="block">
+          <img src={item.image_url} alt={item.name} class="w-full h-48 object-cover" />
+        </a>
+        <div class="p-4">
+          <div class="flex items-center justify-between mb-2">
+            <span class={"inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium #{category_color(item.category)}"}>
+              <span class="mr-1"><%= category_emoji(item.category) %></span>
+              <%= category_name(item.category) %>
+            </span>
+            <span class="flex items-center text-gray-500 text-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+              </svg>
+              <%= format_vote_count(item.votes) %>
+            </span>
+          </div>
+          <a href={~p"/items/#{item.id}"} class="block">
+            <h3 class="text-lg font-semibold text-gray-900 leading-tight hover:text-primary-600"><%= item.name %></h3>
+          </a>
+          <p class="mt-1 text-sm text-gray-500 line-clamp-2"><%= item.description %></p>
+          <div class="mt-3">
+            <div class="flex items-center text-sm text-gray-500">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              <%= item.location %>
+            </div>
+          </div>
+          <div class="mt-3 flex flex-wrap gap-1">
+            <%= for tag <- Enum.take(item.tags, 3) do %>
+              <span class="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-gray-100 text-gray-800">
+                #<%= tag %>
+              </span>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  
+  <%= if @items == [] do %>
+    <div class="text-center py-12">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+      <h3 class="mt-2 text-sm font-medium text-gray-900">Tidak ada data ditemukan</h3>
+      <p class="mt-1 text-sm text-gray-500">Coba ubah filter atau kata kunci pencarian Anda.</p>
+      <div class="mt-6">
+        <a href="/" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+          Lihat Semua
+        </a>
+      </div>
+    </div>
+  <% end %>
+</div>

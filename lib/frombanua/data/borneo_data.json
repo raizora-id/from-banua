@@ -1,0 +1,148 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "name": "Sasirangan Galuh",
+      "category": "usaha",
+      "description": "Produsen kain sasirangan khas Kalimantan Selatan dengan motif-motif tradisional dan kontemporer",
+      "image_url": "https://picsum.photos/id/20/400",
+      "location": "Banjarmasin",
+      "founded_at": "2010",
+      "website": "https://example.com/sasirangan-galuh",
+      "tags": ["fashion", "kerajinan", "tekstil"],
+      "votes": 124
+    },
+    {
+      "id": 2,
+      "name": "Rumah Makan Soto Banjar Pak Amat",
+      "category": "usaha",
+      "description": "Rumah makan yang menyajikan soto banjar asli dengan resep turun temurun sejak 1982",
+      "image_url": "https://picsum.photos/id/21/400",
+      "location": "Banjarmasin",
+      "founded_at": "1982",
+      "website": "https://example.com/soto-pak-amat",
+      "tags": ["kuliner", "makanan tradisional", "halal"],
+      "votes": 210
+    },
+    {
+      "id": 3,
+      "name": "Komunitas Pelestari Jukung",
+      "category": "organisasi",
+      "description": "Komunitas yang fokus melestarikan jukung (perahu tradisional) dan budaya sungai di Kalimantan Selatan",
+      "image_url": "https://picsum.photos/id/22/400",
+      "location": "Banjarmasin",
+      "founded_at": "2015",
+      "website": "https://example.com/pelestari-jukung",
+      "tags": ["budaya", "pelestarian", "sungai"],
+      "votes": 89
+    },
+    {
+      "id": 4,
+      "name": "PT Adaro Energy",
+      "category": "perusahaan",
+      "description": "Perusahaan pertambangan batu bara terbesar di Kalimantan Selatan dengan komitmen pada kelestarian lingkungan",
+      "image_url": "https://picsum.photos/id/23/400",
+      "location": "Tabalong",
+      "founded_at": "1982",
+      "website": "https://example.com/adaro",
+      "tags": ["pertambangan", "energi", "industri"],
+      "votes": 156
+    },
+    {
+      "id": 5,
+      "name": "Pasar Terapung Lok Baintan",
+      "category": "tempat",
+      "description": "Pasar tradisional di atas sungai di mana pedagang berjualan dari perahu, salah satu ikon pariwisata Kalimantan Selatan",
+      "image_url": "https://picsum.photos/id/24/400",
+      "location": "Banjar",
+      "founded_at": "1900",
+      "website": "https://example.com/pasar-terapung",
+      "tags": ["wisata", "pasar tradisional", "budaya"],
+      "votes": 317
+    },
+    {
+      "id": 6,
+      "name": "Kampung Purun Banjarbaru",
+      "category": "tempat",
+      "description": "Sentra kerajinan anyaman dari tanaman purun yang memproduksi berbagai produk ramah lingkungan",
+      "image_url": "https://picsum.photos/id/25/400",
+      "location": "Banjarbaru",
+      "founded_at": "1970",
+      "website": "https://example.com/kampung-purun",
+      "tags": ["kerajinan", "ekowisata", "ramah lingkungan"],
+      "votes": 83
+    },
+    {
+      "id": 7,
+      "name": "Forum Banua Digital",
+      "category": "organisasi",
+      "description": "Komunitas para penggiat digital dan teknologi di Kalimantan Selatan yang aktif mengadakan berbagai kegiatan edukasi",
+      "image_url": "https://picsum.photos/id/26/400",
+      "location": "Banjarmasin",
+      "founded_at": "2018",
+      "website": "https://example.com/banua-digital",
+      "tags": ["teknologi", "pendidikan", "komunitas"],
+      "votes": 112
+    },
+    {
+      "id": 8,
+      "name": "Amuntai Craft Center",
+      "category": "usaha",
+      "description": "Pusat kerajinan tradisional yang menampung berbagai produk UMKM lokal dari daerah Amuntai",
+      "image_url": "https://picsum.photos/id/27/400",
+      "location": "Hulu Sungai Utara",
+      "founded_at": "2012",
+      "website": "https://example.com/amuntai-craft",
+      "tags": ["umkm", "kerajinan", "seni"],
+      "votes": 67
+    },
+    {
+      "id": 9,
+      "name": "Gunung Meratus",
+      "category": "tempat",
+      "description": "Rangkaian pegunungan yang membentang di Kalimantan Selatan dengan keanekaragaman hayati yang tinggi",
+      "image_url": "https://picsum.photos/id/28/400",
+      "location": "Kalimantan Selatan",
+      "founded_at": null,
+      "website": "https://example.com/meratus",
+      "tags": ["alam", "hutan", "ekowisata"],
+      "votes": 201
+    },
+    {
+      "id": 10,
+      "name": "PT Kalsel Gemilang",
+      "category": "perusahaan",
+      "description": "Perusahaan pengolahan karet alam yang memasok bahan baku untuk industri ban dan produk karet lainnya",
+      "image_url": "https://picsum.photos/id/29/400",
+      "location": "Banjarmasin",
+      "founded_at": "2005",
+      "website": "https://example.com/kalsel-gemilang",
+      "tags": ["industri", "ekspor", "pengolahan"],
+      "votes": 45
+    },
+    {
+      "id": 11,
+      "name": "Taman Nasional Tanjung Puting",
+      "category": "tempat",
+      "description": "Kawasan konservasi yang terkenal dengan populasi orangutan, bekantan, dan satwa liar lainnya",
+      "image_url": "https://picsum.photos/id/30/400",
+      "location": "Kotawaringin Barat",
+      "founded_at": "1982",
+      "website": "https://example.com/tanjung-puting",
+      "tags": ["konservasi", "wisata alam", "orangutan"],
+      "votes": 278
+    },
+    {
+      "id": 12,
+      "name": "Paguyuban Petani Lada Banua",
+      "category": "organisasi",
+      "description": "Kelompok petani lada yang bersama-sama meningkatkan kualitas dan pemasaran lada putih Banjar",
+      "image_url": "https://picsum.photos/id/31/400",
+      "location": "Kotabaru",
+      "founded_at": "2008",
+      "website": "https://example.com/petani-lada",
+      "tags": ["pertanian", "rempah", "koperasi"],
+      "votes": 58
+    }
+  ]
+}

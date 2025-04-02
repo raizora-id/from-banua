@@ -1,27 +1,14 @@
 import Config
 
-# Configure your database
-#
-# The MIX_TEST_PARTITION environment variable can be used
-# to provide built-in test partitioning in CI environment.
-# Run `mix help test` for more information.
-config :ngobrolin, Ngobrolin.Repo,
-  username: "riza",
-  password: "empty",
-  hostname: "localhost",
-  database: "ngobrolin_test#{System.get_env("MIX_TEST_PARTITION")}",
-  pool: Ecto.Adapters.SQL.Sandbox,
-  pool_size: System.schedulers_online() * 2
-
 # We don't run a server during test. If one is required,
 # you can enable the server option below.
-config :ngobrolin, NgobrolinWeb.Endpoint,
+config :frombanua, FrombanuaWeb.Endpoint,
   http: [ip: {127, 0, 0, 1}, port: 4002],
-  secret_key_base: "MCfTj12vXT2zvgUvi5Nh0NjMfjfU4wzx4RYX5XAsoqgnB7x5aI4jBg7WHq3zIOIA",
+  secret_key_base: "wXCPIjPfyHEF/Z15dhJLuXAD1YAAnHd2cQ2hTPxRKCkdvXFMDVd6RLgN5I1HVy4H",
   server: false
 
 # In test we don't send emails
-config :ngobrolin, Ngobrolin.Mailer, adapter: Swoosh.Adapters.Test
+config :frombanua, Frombanua.Mailer, adapter: Swoosh.Adapters.Test
 
 # Disable swoosh api client as it is only required for production adapters
 config :swoosh, :api_client, false
